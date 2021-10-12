@@ -7,6 +7,7 @@ import Login from './components/Login';
 import Logout from './components/Logout';
 import PrivateRoute from './components/PrivateRoute';
 import Friends from './components/Friends';
+import FriendsForm from './components/FriendsForm';
 
 function App() {
   let isLoggedIn = localStorage.getItem("token");
@@ -25,8 +26,12 @@ function App() {
               {/* {isLoggedIn ? <Link to="/protected">Protected Page</Link> : <div></div>} */}
               { isLoggedIn && <Link to="/protected">Protected Page</Link> }
             </li>
+            <li>
+              <Link to="/friendsform">Add Friend</Link>
+            </li>
       </ul>
       <Switch>
+          <PrivateRoute exact path="/friendsform" component={FriendsForm} />
           <PrivateRoute exact path="/protected" component={Friends} />
           <PrivateRoute path="/logout" component={Logout} />
           <Route path="/login" component={Login} />
